@@ -1,0 +1,67 @@
+function setup() {
+
+  mouse = createVector(mouseX, mouseY);
+  
+  createCanvas(windowWidth, windowHeight);
+  
+
+  textAlign(CENTER, CENTER);
+}
+
+function hexagon(xPos, yPos, size, rot, fillCol, strokeCol,stretch,isStroke) {
+    push();
+    scale(1,stretch);
+    angleMode(DEGREES);
+    fill(fillCol);
+    if(isStroke) {
+    stroke(strokeCol);
+    strokeWeight(2);
+    } else {
+     noStroke();   
+    }
+    beginShape();
+    for (var r = 0 + rot; r < 360 + rot; r += 60) {
+        var x = size/2 * cos(r) + xPos;
+        var y = size/2 * sin(r) + yPos;
+        vertex(x, y);
+    }
+    endShape(CLOSE);
+    pop();
+}
+
+function logo(x,y,size) {
+    push();
+  scale(size);
+  translate(x,y);
+    strokeWeight(4);
+  stroke(0);
+hexagon(200,157,200,90,color(25, 158, 83),color(8, 120, 25),1.2,true);
+    hexagon(200,158,165,90,color(255,255,255,70),color(0),1.2,false);
+    noStroke();
+    fill(255,255,255,100);
+    triangle(200,71,200,200,113,130);
+    fill(255,255,255,50);
+    triangle(286,247,200,200,283,130);
+    fill(255,255,255,60);
+    triangle(116,247,200,200,115,132);
+    fill(0,0,0,20);
+    triangle(200,306,200,200,115,247);
+    fill(0,0,0,10);
+    triangle(200,306,200,200,286,247);
+    triangle(200,71,200,200,285,129);
+    fill(73, 201, 73);
+    textFont("Avenir");
+    textSize(20);
+    textAlign(CENTER,CENTER);
+    text("Karsten",200,335);
+    fill(42, 150, 42);
+    text("Anderson",200,355);
+    pop();
+    
+}
+
+
+function draw() {
+  background(255,255,255);
+  logo(0,-25,1);
+}
